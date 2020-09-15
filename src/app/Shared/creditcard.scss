@@ -1,0 +1,549 @@
+$sansserif: 'Hind', sans-serif;
+
+$primary: #0A9AFF;
+$secondary: #0D425C;
+
+$grey1: #a6a6a6; 
+$grey2: #9c9c9c;
+$grey3: #646464;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $sansserif;
+  background: white;
+}
+
+
+
+
+.row {
+  font-size: 0;
+  padding: 0 10px;
+  max-width: 980px;
+  margin: 0 auto;
+  
+  .row,
+  &.nopad {
+    padding: 0;
+    margin: 0 -10px;
+  }
+  
+  
+  @media screen and ( min-width: 768px ) {
+    padding: 0 20px;
+    
+    .row,
+    &.nopad {
+      padding: 0;
+      margin: 0 -20px;
+    }
+  }
+}
+
+  .col {
+    font-size: 16px;
+    display: inline-block;
+    width: 100%;
+    padding: 0 10px;
+    vertical-align: top;
+    
+    @media screen and ( min-width: 768px ) {
+      padding: 0 20px;
+    }
+    
+    &-1 {
+      width: 8.3333333333%;
+    }
+    
+    &-2 {
+      width: 16.666666667%;
+    }
+    
+    &-3 {
+      width: 25%;
+    }
+    
+    &-4 {
+      width: 33.333333333%;
+    }
+    
+    &-5 {
+      width: 41.666666667%;
+    }
+    
+    &-6 {
+      width: 50%;
+    }
+    
+    &-7 {
+      width: (7/12)*100%;
+    }
+    
+    &-8 {
+      width: (8/12)*100%;
+    }
+    
+    &-9 {
+      width: (9/12)*100%;
+    }
+    
+    &-10 {
+      width: (10/12)*100%;
+    }
+    
+    &-11 {
+      width: (11/12)*100%;
+    }
+  }
+
+.heading-1 {
+  font-size: 36px;
+  line-height: (40/36);
+  margin-bottom:(20/40)*1em;
+  font-weight: 300;
+}
+
+.heading-medium,
+.heading-2 {
+  
+  font-size: 24px;
+  line-height: (28/24);
+  margin-bottom: (18/24)*1em;
+  
+  @media screen and ( min-width: 640px ) {
+    font-size: 28px;
+    line-height: (32/24);
+  }
+}
+
+.heading-3 {
+  font-size: 20px;
+  line-height: (24/20);
+  margin-bottom:(18/20)*1em;
+  font-weight: 500;
+}
+
+.heading-4 {
+  font-size: 18px;
+  line-height: (24/18);
+  margin-bottom:1em;
+  font-weight: 700;
+}
+
+.heading-5 {
+  font-size: 16px;
+  line-height: (18/14);
+  margin-bottom: 0.125em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+
+.text-1,
+.text-2 {
+  line-height: 1.4;
+  margin-bottom: 1.4em;
+}
+
+.text-1 {
+  font-size: 16px;
+}
+
+.text-2 {
+  font-size: 14px;
+}
+
+.button,
+.button-text {
+  display: inline-block;
+  font-size: (14/16)*1em;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 1.25em;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button {
+  border: none;
+  background: $grey2;
+  color: white;
+  border-radius: 8px;
+  transition: background 0.2s ease-out;
+    box-shadow: 0px 2px 7px rgba( darken($grey3, 20%), 0.3);
+  
+  &--primary {
+    background: $primary;
+    box-shadow: 0px 2px 7px rgba( darken($secondary, 20%), 0.3);
+    
+    &:hover {
+      background: darken($primary, 5%);
+      text-shadow: 2px 2px rgba( darken($secondary, 20%), 0.3);
+    }
+  }
+  
+  &--secondary {
+    background: $secondary;
+    box-shadow: 0px 2px 7px rgba( darken($secondary, 30%), 0.3);
+    
+    &:hover {
+      background: darken($secondary, 5%);
+      text-shadow: 2px 2px rgba( darken($secondary, 20%), 0.3);
+    }
+  }
+  
+  &--medium {
+    min-width: 140px;
+  }
+  
+  &--small {
+    font-size: 12px;
+    padding: 1em;
+  }
+  
+}
+
+.button-full {
+  width: 100%;
+  text-align: center;
+}
+
+.avatar {
+  display: block;
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
+  border-radius: 999px;
+  overflow: hidden;
+  color: $grey1;
+  
+  
+  &:before,
+  &:after,
+  svg {
+    position: absolute;
+  }
+  
+  &:before,
+  &:after {
+    content: "";
+  }
+  
+  &:before {
+    top: 0;
+    left: 0;
+    width: calc(100% - 0.5em);
+    height: calc(100% - 0.5em);
+    
+    border: solid 0.25em currentColor;
+    border-radius: 999px;
+  }
+  
+  &:after {
+    bottom: 0;
+    width: 60%;
+    height: 25%;
+    background: currentColor;
+    left: 20%;
+  }
+  
+  svg {
+    top: 13%;
+    left: 15%;
+    width: 70%;
+    height: 70%;
+    color: currentColor;
+  }
+}
+
+.form {
+  
+  &__field {
+    margin-bottom: 0.5em;
+  }
+  
+  &__footer {
+    margin-top: 2em;
+  }
+}
+
+
+@mixin field_text() {
+  
+    font-size: (14/16)*1em;
+    line-height: 1.3;
+    padding-top: 0.5em;
+    color: $grey3;
+}
+
+.field {
+  display: block;
+  width: 100%;
+  
+  &__label,
+  &__input,
+  &__message,
+  &__wrap {
+    display: block;
+  }
+  
+  &__label {
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: (18/14);
+    padding: 0.25em 0;
+    color: $grey3;
+  }
+  
+  &__input {
+    width: 100%;
+    font-size: 1em;
+    padding: 1em 1em;
+    background: none;
+    border: solid 2px $grey1;
+    border-radius: 4px;
+    
+    &::-webkit-input-placeholder,
+    &::-moz-placeholder,
+    &:-ms-input-placeholder,
+    &:-moz-placeholder {
+      color: $grey1;
+    }
+    
+    &:focus {
+      outline: none;
+      border-color: $primary;
+    }
+    
+    &--iconleft {
+      padding-left: 2.5em;
+    }
+    
+    &--iconright {
+      padding-right: 2.5em;
+    }
+  }
+  
+  &__message {
+    @include field_text();
+  }
+  
+  &__wrap {
+    position: relative;
+  }
+  
+  &__icon {
+    position: absolute;
+    width: 1.5em;
+    height: 1.5em;
+    top: 50%;
+    margin-top: -0.75em;
+    left: 0.75em;
+    color: $grey1;
+    
+    &--small {
+      font-size: 0.75em;
+      width: 2.5em;
+    }
+    
+    &--right {
+      left: auto;
+      right: 0.75em;
+    }
+  }
+  
+  &__input:focus + &__icon {
+    color: $primary;
+  }
+}
+
+.checkbox {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 1em 0;
+  
+  &__input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+  }
+  
+  &__label {
+    @include field_text();
+    
+    position: relative;
+    padding-left: 2.25em;
+    
+    &:before,
+    &:after {
+      position: absolute;
+      top: 50%;
+      left: 0;
+    }
+    
+    &:before {
+      content:"";
+      width: 1.25em;
+      height: 1.25em;
+      margin-top: -0.625em;
+      background: none;
+      border: solid 2px $grey1;
+      border-radius: 4px;
+    }
+  }
+  
+  &__input:checked + &__label {
+    
+    &:before {
+      border-color: $primary;
+    }
+    
+    &:after {
+      font-size: 13px;
+      display: block;
+      content:"";
+      color: $primary;
+      width: 1em;
+      height: 1em;
+      left: 0.35em;
+      margin-top: -0.35em;
+      background-size: cover;
+      background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' fill='#{$primary}' viewBox='0 0 32 32'><title>checkmark</title><path d='M27 4l-15 15-7-7-5 5 12 12 20-20z'></path></svg>");
+    }
+  }
+}
+
+
+
+
+.t-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0px 0px 5px rgba($grey3, 0.5);
+  color: $grey3;
+  
+  &__header,
+  &__body,
+  &__footer {
+    padding: 25px;
+    
+    &--nopad {
+      padding: 0;
+    }
+    
+    &--center {
+      text-align: center;
+    }
+    
+    &--right {
+      text-align: right;
+    }
+    
+    @media screen and ( min-width: 640px ) {
+      padding: 40px;
+    }
+  }
+  
+  &__header {
+    padding-top: 30px;
+    padding-bottom: 15px;
+    
+    @media screen and ( min-width: 640px ) {
+      padding-top: 40px;
+      padding-bottom: 30px;
+    }
+  }
+  
+  &__body {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  
+  &__footer {
+    padding-top: 15px;
+    padding-bottom: 30px;
+    
+    @media screen and ( min-width: 640px ) {
+      padding-top: 30px;
+      padding-bottom: 40px;
+    }
+  }
+}
+
+.t-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  
+  &--right {
+    justify-content: flex-end;
+  }
+  
+  &__item {
+    flex: 0 0 auto;
+    margin-left: 20px;
+    
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+  
+  &__spacer {
+    margin-left: auto;
+  }
+}
+
+
+.s-login {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 80px 15px;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(-195deg, $primary, $secondary);
+  
+  
+  &__card {
+    flex: 1 1 auto;
+    max-width: 540px;
+    margin: 0 auto;
+  }
+}
+
+.s-header {
+  
+}
+
+.s-banner {
+  
+  background: linear-gradient(-195deg, $primary, $secondary);
+  height: 80px;
+}
+
+.s-main {
+  padding: 60px 0;
+  
+  &__header {
+    padding-bottom: 30px;
+  }
+}
+
+.s-main {
+  background: white;
+}
+
+.s-block {
+padding-top: 20px;
+padding-bottom: 20px;
+}
