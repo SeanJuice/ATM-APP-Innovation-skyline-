@@ -21,4 +21,10 @@ export class LoginPage implements OnInit {
   {
     this.route.navigate(['register'])
   }
+  goToAtms(){
+    this.route.navigate(['map'])
+  }
+  Transactions(){
+    this.route.navigate(['transactionoptions'])
+  }
 }
