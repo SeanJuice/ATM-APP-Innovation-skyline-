@@ -15,6 +15,15 @@ const routes: Routes = [
     path: 'register',
     loadChildren: () => import('./User management/register/register.module').then( m => m.RegisterPageModule)
   },
+  {
+    path: 'map',
+    loadChildren: () => import('./Shared/map/map.module').then( m => m.MapPageModule)
+  },  {
+    path: 'transactionoptions',
+    loadChildren: () => import('./shared/transactionoptions/transactionoptions.module').then( m => m.TransactionoptionsPageModule)
+  },
+
+
 ];
 
 @NgModule({
