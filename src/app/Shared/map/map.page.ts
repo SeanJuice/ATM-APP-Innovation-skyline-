@@ -25,7 +25,7 @@ export class MapPage implements OnInit {
 }
 
   showPosition(position): void {
-    //alert("Current Location -> Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude);
+    alert("Current Location -> Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude);
     console.log("Position: " + position + " Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude)
   }
 
