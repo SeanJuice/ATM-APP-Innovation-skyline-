@@ -1,0 +1,7 @@
+{
+  "name": "ATM-APP(v2)",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
