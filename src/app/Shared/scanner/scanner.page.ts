@@ -25,11 +25,14 @@ export class ScannerPage implements OnInit {
       }
   };
 
+  popup: boolean;
+
 
   constructor(/*private qrScanner: QRScanner*/ private renderer:Renderer2, private alert: AlertController, private route: Router) { }
 
 
   ngOnInit() {
+    this.popup = false;
     this.startCamera();
 }
 
@@ -74,7 +77,29 @@ onCodeResult(resultString: string) {
 
 async Transact(QR)
 {
+    this.bankConfirmation(QR);
+}
+
+async bankConfirmation(QR) {
+  const alert = await this.alert.create({
+    cssClass: 'Confirmations',
+    header: 'Bank:',
+    message: 'FNB',
+    buttons: [
+      {text: 'OK',
+      handler: () => {
+        this.popup = true;
+        this.test(QR);
+      }}
+  ]
+  });
+  await alert.present();
+}
+
+test(QR){
+  if(this.popup == true){
     this.presentAlert(QR);
+}
 }
 
 async presentAlert(QR) {
@@ -90,16 +115,10 @@ async presentAlert(QR) {
         {text: 'Proceed',
         handler: () => {
           console.log("Validated: " + QR);
-        }}
+        }},
     ]
     });
     await alert.present();
     await this.route.navigate(['login'])
   }
-
-Transact(QR)
-{
- console.log(QR)
-}
-
 }

@@ -38,15 +38,13 @@ import { ZXingScannerModule } from './public_api';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCiYPfg_zOdMhxyyLSkUvi121pzdH6KAbU',
       libraries: ['places']
-    })
-
-    BrowserAnimationsModule
+    }),
     // AgmCoreModule.forRoot({
     //   apiKey: 'AIzaSyCiYPfg_zOdMhxyyLSkUvi121pzdH6KAbU',
     //   libraries: ['places']
     // })
 
-    ZXingScannerModule,
+    ZXingScannerModule
   ],
   providers: [
     StatusBar,
