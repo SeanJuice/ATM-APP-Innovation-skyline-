@@ -26,6 +26,8 @@ export class ScannerPage implements OnInit {
   };
 
   popup: boolean;
+  popup2: boolean;
+
 
 
   constructor(/*private qrScanner: QRScanner*/ private renderer:Renderer2, private alert: AlertController, private route: Router) { }
@@ -80,6 +82,16 @@ async Transact(QR)
     this.bankConfirmation(QR);
 }
 
+test(QR){
+  if(this.popup == true){
+    this.locationConfirmation(QR);
+  }
+  if(this.popup2 == true){
+    this.presentAlert(QR);
+  }
+}
+
+//Popup1
 async bankConfirmation(QR) {
   const alert = await this.alert.create({
     cssClass: 'Confirmations',
@@ -95,13 +107,24 @@ async bankConfirmation(QR) {
   });
   await alert.present();
 }
-
-test(QR){
-  if(this.popup == true){
-    this.presentAlert(QR);
+//Popup 2
+async locationConfirmation(QR) {
+  this.popup = false;
+  const alert = await this.alert.create({
+    cssClass: 'Confirmations',
+    header: 'Bank:',
+    message: 'Location db;jdsfg sdg;ln sdfn ',
+    buttons: [
+      {text: 'OK',
+      handler: () => {
+        this.popup2 = true;
+        this.test(QR);
+      }}
+  ]
+  });
+  await alert.present();
 }
-}
-
+//Popup3
 async presentAlert(QR) {
     const alert = await this.alert.create({
       cssClass: 'Confirmations',
