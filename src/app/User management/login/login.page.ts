@@ -12,11 +12,6 @@ export class LoginPage implements OnInit {
   ShowError:boolean;
   ngOnInit() {
   }
-  onSubmit(password,username )
-  {
-    console.log(password)
-    this.route.navigate(['register'])
-  }
   Register()
   {
     this.route.navigate(['register'])
@@ -24,7 +19,7 @@ export class LoginPage implements OnInit {
   goToAtms(){
     this.route.navigate(['map'])
   }
-  Transactions(){
-    this.route.navigate(['transactionoptions'])
+  login(){
+    this.route.navigate(['loginscreen'])
   }
 }

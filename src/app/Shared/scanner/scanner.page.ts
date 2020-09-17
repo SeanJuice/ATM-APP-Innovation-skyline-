@@ -1,6 +1,10 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 //import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 
+import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
+
+
 @Component({
   selector: 'app-scanner',
   templateUrl: './scanner.page.html',
@@ -21,7 +25,10 @@ export class ScannerPage implements OnInit {
       }
   };
 
-  constructor(/*private qrScanner: QRScanner*/ private renderer:Renderer2) { }
+
+  constructor(/*private qrScanner: QRScanner*/ private renderer:Renderer2, private alert: AlertController, private route: Router) { }
+
+
   ngOnInit() {
     this.startCamera();
 }
@@ -64,8 +71,35 @@ onCodeResult(resultString: string) {
   this.qrResultString = resultString;
 }
 
+
+async Transact(QR)
+{
+    this.presentAlert(QR);
+}
+
+async presentAlert(QR) {
+    const alert = await this.alert.create({
+      cssClass: 'Confirmations',
+      header: 'Banking Pin:',
+      inputs: [
+        {
+          name: 'pin',
+          placeholder: 'e.g 1234'
+        }],
+      buttons: [
+        {text: 'Proceed',
+        handler: () => {
+          console.log("Validated: " + QR);
+        }}
+    ]
+    });
+    await alert.present();
+    await this.route.navigate(['login'])
+  }
+
 Transact(QR)
 {
  console.log(QR)
 }
+
 }
