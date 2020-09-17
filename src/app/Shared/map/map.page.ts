@@ -14,7 +14,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 export class MapPage implements OnInit {
 
-  title: string = 'AGM project';
+  title: string = 'AGM project2';
   latitude: number;
   longitude: number;
   zoom: number;
