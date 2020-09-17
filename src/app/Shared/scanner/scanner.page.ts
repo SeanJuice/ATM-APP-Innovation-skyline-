@@ -1,7 +1,9 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 //import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
+
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-scanner',
@@ -23,7 +25,9 @@ export class ScannerPage implements OnInit {
       }
   };
 
+
   constructor(/*private qrScanner: QRScanner*/ private renderer:Renderer2, private alert: AlertController, private route: Router) { }
+
 
   ngOnInit() {
     this.startCamera();
@@ -67,6 +71,7 @@ onCodeResult(resultString: string) {
   this.qrResultString = resultString;
 }
 
+
 async Transact(QR)
 {
     this.presentAlert(QR);
@@ -91,4 +96,10 @@ async presentAlert(QR) {
     await alert.present();
     await this.route.navigate(['login'])
   }
+
+Transact(QR)
+{
+ console.log(QR)
+}
+
 }
