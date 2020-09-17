@@ -14,11 +14,12 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { MatDialogModule, } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-//import { AgmCoreModule } from '@agm/core/lib/core.module';
-//import { MapsAPIWrapper, AgmMap } from '@agm/core';
+import { BalancePipe } from './balance.pipe';
+import { AgmCoreModule } from '@agm/core';
+//import { MapsAPILoader } from './maps-api-loader/maps-api-loader';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, BalancePipe],
   entryComponents: [],
   imports: [BrowserModule, 
     IonicModule.forRoot(),
@@ -27,20 +28,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AngularFirestoreModule,
     AngularFireStorageModule,
     MatDialogModule,
-    BrowserAnimationsModule
-    // AgmCoreModule.forRoot({
-    //   apiKey: 'AIzaSyCiYPfg_zOdMhxyyLSkUvi121pzdH6KAbU',
-    //   libraries: ['places']
-    // })
+    BrowserAnimationsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCiYPfg_zOdMhxyyLSkUvi121pzdH6KAbU',
+      libraries: ['places']
+    })
   ],
   providers: [
     StatusBar,
     SplashScreen,
-
+    ,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
 
     AngularFirestore
-    //,MapsAPIWrapper
   ],
   bootstrap: [AppComponent]
 })

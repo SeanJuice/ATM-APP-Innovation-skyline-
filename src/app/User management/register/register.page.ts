@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class RegisterPage implements OnInit {
   detailsShow = true;
   CreditcardDetails = false
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
   }
@@ -17,5 +18,8 @@ export class RegisterPage implements OnInit {
    this.detailsShow =false
    this.CreditcardDetails =true
  }
-
+ BackHome()
+ {
+    this.router.navigate(['./login'])
+ }
 }
