@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
-
+import { ZXingScannerModule } from './public_api';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,12 +22,14 @@ import { environment } from 'src/environments/environment';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    ZXingScannerModule,
+    
   ],
   providers: [
     StatusBar,
     SplashScreen,
-
+    ,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
 
     AngularFirestore,

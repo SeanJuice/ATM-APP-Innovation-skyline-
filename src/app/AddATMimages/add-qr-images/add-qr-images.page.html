@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>AddQrImages</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="width: 30%;">
+    <input class="choose-file" type="file" id="choose-file"  (change)="selectFile($event)" required >
+    <label for="choose-file" class="upload-file"></label>
+
+  
+
+  </div>
+  <div *ngIf="currentFileUpload" class="progress" style="width: 50%;">
+    <div class="progress-bar progress-bar-info progress-bar-striped"
+      role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+      aria-valuemin="0" aria-valuemax="100"
+      [ngStyle]="{width:progress.percentage+'%'}" >
+      {{progress.percentage}}%
+    </div>
+
+  </div>
+</ion-content>
