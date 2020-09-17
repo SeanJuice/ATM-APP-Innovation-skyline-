@@ -24,10 +24,19 @@ const routes: Routes = [
     loadChildren: () => import('./shared/transactionoptions/transactionoptions.module').then( m => m.TransactionoptionsPageModule)
   },
   {
+    path: 'scanner',
+    loadChildren: () => import('./Shared/scanner/scanner.module').then( m => m.ScannerPageModule)
+  },
+  {
+    path: 'add-qr-images',
+    loadChildren: () => import('./AddATMimages/add-qr-images/add-qr-images.module').then( m => m.AddQrImagesPageModule)
+  },
+
     path: 'virtualreality-qr',
     loadChildren: () => import('./shared/virtualreality-qr/virtualreality-qr.module').then( m => m.VirtualrealityQRPageModule)
   },
 ];
+
 
 @NgModule({
   imports: [
