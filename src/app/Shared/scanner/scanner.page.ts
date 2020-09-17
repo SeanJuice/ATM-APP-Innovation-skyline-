@@ -27,6 +27,8 @@ export class ScannerPage implements OnInit {
 
   popup: boolean;
   popup2: boolean;
+  atm: any;
+
 
 
 
@@ -98,6 +100,10 @@ async bankConfirmation(QR) {
     header: 'Bank:',
     message: 'FNB',
     buttons: [
+      {text: 'Cancel',
+      handler: () => {
+        this.route.navigate(['transactionoptions'])
+      }},,
       {text: 'OK',
       handler: () => {
         this.popup = true;
@@ -109,12 +115,17 @@ async bankConfirmation(QR) {
 }
 //Popup 2
 async locationConfirmation(QR) {
+  this.atm = "https://naibuzz.com/wp-content/uploads/2017/05/FNB.jpg";
   this.popup = false;
   const alert = await this.alert.create({
     cssClass: 'Confirmations',
-    header: 'Bank:',
-    message: 'Location db;jdsfg sdg;ln sdfn ',
+    header: 'Location Confrimation:',
+    message: `<img src="${this.atm}">`,
     buttons: [
+      {text: 'Cancel',
+      handler: () => {
+        this.route.navigate(['transactionoptions'])
+      }},
       {text: 'OK',
       handler: () => {
         this.popup2 = true;
@@ -135,6 +146,10 @@ async presentAlert(QR) {
           placeholder: 'e.g 1234'
         }],
       buttons: [
+        {text: 'Cancel',
+        handler: () => {
+          this.route.navigate(['transactionoptions'])
+        }},
         {text: 'Proceed',
         handler: () => {
           console.log("Validated: " + QR);
