@@ -31,7 +31,7 @@
       </div>
     </body>
 
-    <ion-card>
+
       <div *ngIf='CreditcardDetails'>
         <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <defs>
@@ -208,18 +208,17 @@
             </div>
             <footer class="t-card__footer t-toolbar">
               <div class="t-toolbar__item">
-                <button class="button button--primary">Confirm Registration</button>
+                <button class="button button--primary">Confirm</button>
               </div>
               <br/>
-            
+              <div class="t-toolbar__item" align="center">
+                <button class="button button--primary" style="width: 110%;" (click)="BackHome()">CANCEL</button>
+              </div>
             </footer>
           
           </form>
             
-          <div class="t-toolbar__item" align="center">
-            <button class="button button--primary" style="width: 110%;" (click)="BackHome()">CANCEL</button>
-          </div>
+
       </div>
-    </ion-card>
     
 </ion-content>

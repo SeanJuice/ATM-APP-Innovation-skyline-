@@ -139,7 +139,7 @@ export class MapPage implements OnInit {
         {text: 'Never',
         handler: () => {
           this.route.navigate(['login'])
-        }}
+        }},
       ]
   });
   this.popup = true;
