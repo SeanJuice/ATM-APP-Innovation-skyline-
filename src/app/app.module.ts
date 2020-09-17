@@ -12,19 +12,39 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
+
+import { MatDialogModule, } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BalancePipe } from './balance.pipe';
+import { AgmCoreModule } from '@agm/core';
+//import { MapsAPILoader } from './maps-api-loader/maps-api-loader';
+
 import { ZXingScannerModule } from './public_api';
 
+
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, BalancePipe],
   entryComponents: [],
   imports: [BrowserModule, 
-    IonicModule.forRoot(), 
+    IonicModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireStorageModule,
-    ZXingScannerModule,
-    
+
+    MatDialogModule,
+
+    BrowserAnimationsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCiYPfg_zOdMhxyyLSkUvi121pzdH6KAbU',
+      libraries: ['places']
+    }),
+    // AgmCoreModule.forRoot({
+    //   apiKey: 'AIzaSyCiYPfg_zOdMhxyyLSkUvi121pzdH6KAbU',
+    //   libraries: ['places']
+    // })
+
+    ZXingScannerModule
   ],
   providers: [
     StatusBar,
@@ -32,7 +52,7 @@ import { ZXingScannerModule } from './public_api';
     ,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
 
-    AngularFirestore,
+    AngularFirestore
   ],
   bootstrap: [AppComponent]
 })

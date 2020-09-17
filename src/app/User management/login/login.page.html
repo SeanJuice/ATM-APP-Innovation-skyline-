@@ -1,13 +1,12 @@
-
-
-<ion-header>
-   
-</ion-header>
-<div style="padding-top: 5%;"></div>
-
 <ion-content>
-	<div class="box" style="height: 60%;">
-		<h2>Welcome</h2>
+	<head>
+		<meta charset="utf-8">
+		<title>Login NoTouchMoney</title>
+		<link rel="stylesheet" href="style.css">
+	  </head>
+	  <body>
+	<div class="box">
+		<h2>ATM</h2>
 		<form action="">
 			<div class="inputBox">
         <ion-button style="width: 100%;" (click)="Register()">SIGN UP</ion-button>
@@ -16,10 +15,13 @@
         <ion-button (click)="goToAtms()" style="width: 100%; padding-top: 6%;">ATM's NEAR ME</ion-button>
       </div>
       <div class="inputBox">
-        <ion-button (click)="Transactions()" style="width: 100%;padding-top: 6%;">LOGIN</ion-button>
+        <ion-button (click)="login()" style="width: 100%;padding-top: 6%;">LOGIN</ion-button>
 			</div>
-		
+			&nbsp; &nbsp;
+			<br><br>
+			&nbsp;&nbsp; <img src="http://bursary.seniorjournalism.com/wp-content/uploads/2013/01/bdo_SA_logo.jpg" alt="BDO" width="150" height="50">  
+			&nbsp; &nbsp;
 		</form>
 	</div>
-
+	</body>
 </ion-content>

@@ -1,6 +1,10 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 //import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 
+import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
+
+
 @Component({
   selector: 'app-scanner',
   templateUrl: './scanner.page.html',
@@ -21,8 +25,18 @@ export class ScannerPage implements OnInit {
       }
   };
 
-  constructor(/*private qrScanner: QRScanner*/ private renderer:Renderer2) { }
+  popup: boolean;
+  popup2: boolean;
+  atm: any;
+
+
+
+
+  constructor(/*private qrScanner: QRScanner*/ private renderer:Renderer2, private alert: AlertController, private route: Router) { }
+
+
   ngOnInit() {
+    this.popup = false;
     this.startCamera();
 }
 
@@ -64,8 +78,85 @@ onCodeResult(resultString: string) {
   this.qrResultString = resultString;
 }
 
-Transact(QR)
+
+async Transact(QR)
 {
- console.log(QR)
+    this.bankConfirmation(QR);
 }
+
+test(QR){
+  if(this.popup == true){
+    this.locationConfirmation(QR);
+  }
+  if(this.popup2 == true){
+    this.presentAlert(QR);
+  }
+}
+
+//Popup1
+async bankConfirmation(QR) {
+  const alert = await this.alert.create({
+    cssClass: 'Confirmations',
+    header: 'Bank:',
+    message: 'FNB',
+    buttons: [
+      {text: 'Cancel',
+      handler: () => {
+        this.route.navigate(['transactionoptions'])
+      }},,
+      {text: 'OK',
+      handler: () => {
+        this.popup = true;
+        this.test(QR);
+      }}
+  ]
+  });
+  await alert.present();
+}
+//Popup 2
+async locationConfirmation(QR) {
+  this.atm = "https://naibuzz.com/wp-content/uploads/2017/05/FNB.jpg";
+  this.popup = false;
+  const alert = await this.alert.create({
+    cssClass: 'Confirmations',
+    header: 'Location Confrimation:',
+    message: `<img src="${this.atm}">`,
+    buttons: [
+      {text: 'Cancel',
+      handler: () => {
+        this.route.navigate(['transactionoptions'])
+      }},
+      {text: 'OK',
+      handler: () => {
+        this.popup2 = true;
+        this.test(QR);
+      }}
+  ]
+  });
+  await alert.present();
+}
+//Popup3
+async presentAlert(QR) {
+    const alert = await this.alert.create({
+      cssClass: 'Confirmations',
+      header: 'Banking Pin:',
+      inputs: [
+        {
+          name: 'pin',
+          placeholder: 'e.g 1234'
+        }],
+      buttons: [
+        {text: 'Cancel',
+        handler: () => {
+          this.route.navigate(['transactionoptions'])
+        }},
+        {text: 'Proceed',
+        handler: () => {
+          console.log("Validated: " + QR);
+        }},
+    ]
+    });
+    await alert.present();
+    await this.route.navigate(['login'])
+  }
 }
