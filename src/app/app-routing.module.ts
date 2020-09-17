@@ -18,7 +18,8 @@ const routes: Routes = [
   {
     path: 'map',
     loadChildren: () => import('./Shared/map/map.module').then( m => m.MapPageModule)
-  },  {
+  },
+  {
     path: 'transactionoptions',
     loadChildren: () => import('./shared/transactionoptions/transactionoptions.module').then( m => m.TransactionoptionsPageModule)
   },
@@ -31,8 +32,11 @@ const routes: Routes = [
     loadChildren: () => import('./AddATMimages/add-qr-images/add-qr-images.module').then( m => m.AddQrImagesPageModule)
   },
 
-
+    path: 'virtualreality-qr',
+    loadChildren: () => import('./shared/virtualreality-qr/virtualreality-qr.module').then( m => m.VirtualrealityQRPageModule)
+  },
 ];
+
 
 @NgModule({
   imports: [
