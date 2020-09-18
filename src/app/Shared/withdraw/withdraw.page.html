@@ -3,12 +3,12 @@
     <div class="box">
       <h2>
   </h2>
-      <form action="">
+      <form (ngSubmit)="Transaction($event)">
         <div class="inputBox">
-          <input type="text" name="" required="">
+          <input type="text" name="amount" required="">
           <label for="">Withdrawal Amount</label>
         </div>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="" value="P r o c e e d" (click)="Transaction()">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="" value="P r o c e e d">
       </form>
     </div>
   </body>
