@@ -27,16 +27,16 @@ export class ScannerPage implements OnInit {
 
   popup: boolean;
   popup2: boolean;
+  homescreen: boolean;
   atm: any;
-
-
-
+  qrData : Boolean;
 
   constructor(/*private qrScanner: QRScanner*/ private renderer:Renderer2, private alert: AlertController, private route: Router) { }
 
-
   ngOnInit() {
     this.popup = false;
+    this.homescreen = false;
+    this.qrData = false;
     this.startCamera();
 }
 
@@ -76,12 +76,19 @@ clearResult(): void {
 
 onCodeResult(resultString: string) {
   this.qrResultString = resultString;
+  if(this.qrData == false){
+    this.successNotification(this.qrResultString);
+    this.qrData = true;
+  }
+  else if(this.qrData == true){
+    console.log("QR code already scanned: " + this.qrResultString);
+  }
 }
 
 
 async Transact(QR)
 {
-    this.bankConfirmation(QR);
+    this.successNotification(QR);
 }
 
 test(QR){
@@ -91,29 +98,32 @@ test(QR){
   if(this.popup2 == true){
     this.presentAlert(QR);
   }
+  if(this.homescreen == true){
+    this.route.navigate(['transactionoptions'])
+  }
 }
-
 //Popup1
-async bankConfirmation(QR) {
+async successNotification(QR) {
   const alert = await this.alert.create({
     cssClass: 'Confirmations',
-    header: 'Bank:',
-    message: 'FNB',
+    header: 'Successfully captured',
+    message: 'Bank: FNB',
     buttons: [
       {text: 'Cancel',
       handler: () => {
         this.route.navigate(['transactionoptions'])
-      }},,
-      {text: 'OK',
+      }},
+      {text: 'Proceed',
       handler: () => {
         this.popup = true;
-        this.test(QR);
+        this.test(QR);      
       }}
   ]
   });
   await alert.present();
 }
-//Popup 2
+
+//Popup2
 async locationConfirmation(QR) {
   this.atm = "https://naibuzz.com/wp-content/uploads/2017/05/FNB.jpg";
   this.popup = false;
@@ -152,11 +162,17 @@ async presentAlert(QR) {
         }},
         {text: 'Proceed',
         handler: () => {
-          console.log("Validated: " + QR);
+          this.popup2 = false;
+          this.homescreen = true;
+          this.test(QR);
+          console.log("Validated: " + QR + " (with amount: " + sessionStorage["WithdrawalAmount"] + ")");
         }},
     ]
     });
     await alert.present();
-    await this.route.navigate(['login'])
+  }
+
+  back(){
+    this.route.navigate(['withdraw'])
   }
 }

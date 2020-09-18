@@ -9,10 +9,13 @@ import { Router } from '@angular/router';
 export class WithdrawPage implements OnInit {
 
   constructor(private route: Router) { }
-
+  amount: string;
   ngOnInit() {
   }
-  Transaction(){
+
+  Transaction(e){
+    sessionStorage["WithdrawalAmount"] = e.target.amount.value;
+    console.log(sessionStorage["WithdrawalAmount"]);
     this.route.navigate(['scanner'])
   }
 }

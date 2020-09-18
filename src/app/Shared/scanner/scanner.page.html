@@ -1,5 +1,4 @@
 <ion-content>
-
   <div class="box" style="height: 90%; width: 95%;" hidden>
     <h2>Scan ATM</h2>
     <div class="container vh-100">
@@ -16,22 +15,25 @@
       </div>
    </div>
   </div>
-  <div class="box" style="height: 90%; width: 95%;" align="center">
+  <div class="box" style="height: 50%; width: 95%;" align="center">
    <h2>Scan QR Code</h2>
-   <zxing-scanner (scanSuccess)="onCodeResult($event)"></zxing-scanner>
-   <section class="results" *ngIf="qrResultString">
+   <zxing-scanner  (scanSuccess)="onCodeResult($event)"></zxing-scanner>
+   <!-- <section class="results" *ngIf="qrResultString">
       <div>
         <small>Result</small>
         <strong>Successfully captured</strong>
       </div>
       <button mat-icon-button (click)="clearResult()">&times;</button>
     </section>
+    
        <div class="center-button">
 
          <button class="btn-save"(click)="Transact(qrResultString)" *ngIf="qrResultString" >
              <strong>PROCEED WITH TRANSACTION</strong>
            </button>
-     </div>
-       
-</div>
+     </div> -->    
+<!-- <br><br><br><br><br><br><br><br>
+<ion-button style="width: 100%;" (click)="back()">Back</ion-button> -->
+</div> 
+
 </ion-content>
