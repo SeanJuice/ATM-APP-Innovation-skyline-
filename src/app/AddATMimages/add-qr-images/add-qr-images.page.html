@@ -5,19 +5,27 @@
 </ion-header>
 
 <ion-content>
-  <div style="width: 30%;">
-    <input class="choose-file" type="file" id="choose-file"  (change)="selectFile($event)" required >
-    <label for="choose-file" class="upload-file"></label>
+  <div class="checkout__delivery-address" align='center'  >
+
 
   
 
   </div>
-  <form #form="ngForm" (submit)="upload(StudentNo.value)">
+  <form #form="ngForm" (submit)="upload(StudentNo.value)" style="color: black;">
   
     <input type="text" id="username"  class="fadeIn second" name="login"  ngModel  #StudentNo="ngModel"  placeholder="ATM Name">
   
-    <input type="submit" class="fadeIn fourth" value="GENERATE">
-  </form>
+ 
+  <div class="form-group checkout__address-form-group">
+    <div class="form-group__label">
+      <label class="checkout__address-form-label label label--required" for="exampleInputEmail1">Attach document *</label>
+      <div style="width: 30%;">
+        <input class="choose-file" type="file" (change)="selectFile($event)"   id="choose-file" required >
+        <label for="choose-file" class="upload-file"> </label>
+      </div>
+   
+    </div>           
+  </div>
   <div *ngIf="currentFileUpload" class="progress" style="width: 50%;">
     <div class="progress-bar progress-bar-info progress-bar-striped"
       role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
@@ -25,6 +33,11 @@
       [ngStyle]="{width:progress.percentage+'%'}" >
       {{progress.percentage}}%
     </div>
-
+   
+    
   </div>
+  <button class="btn btn-success" [disabled]="!selectedFiles" type="submit"
+  >Upload</button>
+</form>
+
 </ion-content>
