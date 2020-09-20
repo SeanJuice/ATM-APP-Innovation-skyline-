@@ -1,3 +1,5 @@
+@import '../../User management/login/login.page.scss';
+
 zxing-scanner {
     max-width: 100%;
   }
@@ -8,7 +10,7 @@ zxing-scanner {
     bottom: 0;
     padding: 15px;
     background: #02c3c3;
-    color: black;
+    color: #fff;
   
     display: flex;
     align-items: center;
@@ -28,7 +30,7 @@ zxing-scanner {
       font-weight: bolder;
       font-size: 120%;
       float: right;
-      color: black;
+      color: #fff;
       $mg: 8px;
       margin: (-$mg) (-$mg) (-$mg) $mg;
     }
@@ -49,34 +51,40 @@ zxing-scanner {
   width: 100%;
   padding-bottom: 5%;
 }
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-  //background: #4568DC;  //fallback for old browsers 
-  //background: -webkit-linear-gradient(to right, #fff12a, #45dcaa, #fda809);
-  background: linear-gradient(to right, darkblue, red, white);
-  //background: white;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+
+.results {
+
+  position: sticky;
+  bottom: 0;
+  padding: 15px;
+  background: #02c3c3;
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  small {
+    font-weight: bolder;
+    display: block;
+    font-size: 60%;
+    margin: -.6em 0 0 0;
+  }
+
+  button {
+    background: none;
+    border: none;
+    line-height: 1;
+    font-weight: bolder;
+    font-size: 120%;
+    float: right;
+    color: #fff;
+    $mg: 8px;
+    margin: (-$mg) (-$mg) (-$mg) $mg;
+  }
 }
-.box {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%,-50%);
-	width: 400px;
-	padding: 40px;
-	//background: linear-gradient(to bottom, black, gold, white);
-	background: white;
-	box-sizing: border-box;
-	box-shadow: white;
-	border-radius: 10px;
+
+h2 {
+  padding: 0 16px;
 }
-.box h2 {
-	margin: 0 0 30px;
-	padding: 0;
-	color: darkblue;
-	text-align: center;
-}
+@import '../buttons.scss'
