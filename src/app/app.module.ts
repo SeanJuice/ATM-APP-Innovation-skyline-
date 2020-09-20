@@ -13,7 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 
-//import { MatDialogModule, } from '@angular/material/dialog';
+import { MatDialogModule, } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BalancePipe } from './balance.pipe';
 import { AgmCoreModule } from '@agm/core';
@@ -52,7 +52,8 @@ import { ZXingScannerModule } from './public_api';
     ,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
 
-    AngularFirestore
+    AngularFirestore,
+    MatDialogModule
   ],
   bootstrap: [AppComponent]
 })

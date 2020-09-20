@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { AgmCoreModule } from '@agm/core';
 
+
 @Component({
   selector: 'app-map',
   templateUrl: './map.page.html',
