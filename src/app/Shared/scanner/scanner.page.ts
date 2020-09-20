@@ -243,11 +243,10 @@ async presentAlert(QR) {
     let now = new Date();
 
     const toast = await this.toastController.create({
-      message: 'Bank Notification:-)  R' + sessionStorage["WithdrawalAmount"] + '.00 paid from Savings Account ...0875421 @Smartapp - Ref 48456; ' + now.toString(),
+      message: `<img src="../assets/images/brise.jpg" width="20" height="20">` + 'Bank Notification:-)  R' + sessionStorage["WithdrawalAmount"] + '.00 paid from Savings Account ...0875421 @Smartapp - Ref 48456; ' + now.toString(),
       position:"top",
       cssClass: "MyToasts",
       duration: 7000,
-      
     })
     
     toast.present();
@@ -257,7 +256,7 @@ async presentAlert(QR) {
   }
   async takeMoneyNotification() {
     const toast = await this.toastController.create({
-      message: 'Please proceed to take your money: R' + sessionStorage["WithdrawalAmount"] + '.00 Savings Account ...0875421 @Smartapp - Ref 48456',
+      message: `<img src="../assets/images/brise.jpg" width="20" height="20">` +  'Please proceed to take your money: R' + sessionStorage["WithdrawalAmount"] + '.00 Savings Account ...0875421 @Smartapp - Ref 48456',
       position:"top",
       cssClass: "MyToasts",
       duration: 3500,
