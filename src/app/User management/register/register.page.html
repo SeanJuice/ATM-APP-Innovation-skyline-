@@ -31,6 +31,8 @@
             <label for="">IMEI</label>
           </div>
           <input type="submit" name="" value="C o n t i n u e" (click)="flip()">
+          <br><br>
+          &nbsp;&nbsp;&nbsp;<img src="../assets/images/brise.jpg" alt="BDO" width="100" height="80">     
         </form>
       </div>
     </body>
@@ -212,11 +214,11 @@
             </div>
             <footer class="t-card__footer t-toolbar">
               <div class="t-toolbar__item">
-                <button class="button button--primary">Confirm</button>
+                <button class="btn btn-success" (click)="BackHome()">Confirm</button>
               </div>
               <br/>
               <div class="t-toolbar__item" align="center">
-                <button class="button button--primary" style="width: 110%;" (click)="BackHome()">CANCEL</button>
+                <button class="btn btn-danger" style="width: 110%;" (click)="BackHome()">CANCEL</button>
               </div>
             </footer>
           
