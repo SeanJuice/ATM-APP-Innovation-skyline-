@@ -1,10 +1,8 @@
 import { Component, Inject, OnInit, ViewChild, ElementRef, Input, NgZone } from '@angular/core';
 import { MapsAPILoader, AgmMap } from '@agm/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { AgmCoreModule } from '@agm/core';
-import { MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-map',
@@ -25,7 +23,7 @@ export class MapPage implements OnInit {
   @ViewChild('search',{static:false})
   public searchElementRef: ElementRef;
 
-  constructor(private route: Router, public dialog: MatDialog, private alert: AlertController, private ngZone: NgZone, private mapsAPILoader: MapsAPILoader) { }
+  constructor(private route: Router, private alert: AlertController, private ngZone: NgZone, private mapsAPILoader: MapsAPILoader) { }
 
     //, private mapsAPILoader: MapsAPILoader
   

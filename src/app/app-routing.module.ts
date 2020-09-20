@@ -50,7 +50,12 @@ const routes: Routes = [
   }, {
     path: 'deposit',
     loadChildren: () => import('./Shared/deposit/deposit.module').then( m => m.DepositPageModule)
+  },
+  {
+    path: 'imei',
+    loadChildren: () => import('./Shared/imei/imei.module').then( m => m.ImeiPageModule)
   }
+
 ] 
 
 @NgModule({
