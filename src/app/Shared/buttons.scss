@@ -17,11 +17,14 @@
 	clear: both;
 }
 body {
-	background: #cfd8dc;
+	background: linear-gradient(to right, darkblue, red, white);
 	color: #37474f;
 	font-weight: 400;
 	font-size: 1em;
 	font-family: 'Raleway', Arial, sans-serif;
+	align-items: center;
+	display: table-cell;
+    vertical-align: middle;
 }
 .support {
 	font-weight: bold;
