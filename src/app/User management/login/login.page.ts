@@ -22,4 +22,7 @@ export class LoginPage implements OnInit {
   login(){
     this.route.navigate(['loginscreen'])
   }
+  imei(){
+    this.route.navigate(['imei'])
+  }
 }
