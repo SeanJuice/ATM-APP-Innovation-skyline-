@@ -96,7 +96,7 @@ onCodeResult(resultString: string) {
      
       const alert = await this.alert.create({
         cssClass: 'Confirmations',
-        header: 'Successfully captured, Insert the money on the container',
+        header: 'Successfully captured. Please place the money in the cash container.',
       //  message:` Bank: ${Atm.BankName}`,
         buttons: [
           {text: 'Cancel',
@@ -113,8 +113,11 @@ onCodeResult(resultString: string) {
       await alert.present();
     }
     async SuccessfulTransaction() {
+
+      let now = new Date();
+
       const toast = await this.toastController.create({
-        message: 'Deposit to Account Mr SS Successfully',
+        message: 'Deposit to ' + sessionStorage["DepositName"] + ': Account ' + sessionStorage["Account"] + ' Successful ;' + now.toString(),
         position:"top",
         cssClass: "MyToasts",
         duration: 3000,
@@ -128,7 +131,7 @@ onCodeResult(resultString: string) {
     }
     async takeMoneyNotification() {
       const toast = await this.toastController.create({
-        message: 'Notify Mr SS to check their account =',
+        message: 'Please Notify ' + sessionStorage["DepositName"] + ' to check their account. Reference: ' + sessionStorage["Reference"] ,
         position:"top",
         cssClass: "MyToasts",
         duration: 3000,

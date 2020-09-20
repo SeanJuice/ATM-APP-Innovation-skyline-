@@ -1,27 +1,21 @@
-
-
-<ion-header>
-   
-</ion-header>
-<div style="padding-top: 5%;"></div>
-
 <ion-content>
+  <body>
 	<div class="box" style="height: 60%;">
-		<h2>Enter Your Names abd Phone Number</h2>
-		<form action="">
+		<h2>Enter Recepient Details:</h2>
+    <form (ngSubmit)="store($event)">      
       <div class="inputBox">
-        <input type="text" name="Name" required="">
-        <label for="">Name and Surname</label>
+        <input type="text" name="name" required="">
+        <label for="">Name & Surname</label>
       </div>
 		  <div class="inputBox">
-        <input type="text" name="Name" required="">
-        <label for="">Phone Number</label>
+        <input type="text" name="cell" required="">
+        <label for="">Cellphone Number</label>
       </div>
+      &nbsp;&nbsp;&nbsp;<input type="submit" name="" value="P r o c e e d">
+      <br><br>
+      &nbsp;&nbsp;&nbsp;<img src="../assets/images/logo.jpg" alt="BDO" width="100" height="50">   
     </form>
-    
-    <div class="inputBox">
-      <ion-button  style="width: 100%;padding-top: 6%;" (click)="next()">Next</ion-button>
-    </div>
-	</div>
 
+	</div>
+</body>
 </ion-content>

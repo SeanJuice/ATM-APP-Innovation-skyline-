@@ -10,21 +10,26 @@ import { Component, OnInit } from '@angular/core';
 export class ReferenceComponent implements OnInit {
 
   constructor(private  router:Router,private alert:AlertController,private toastController:ToastController) { }
+  ref: string;
+  account: string;
 
   ngOnInit() {}
   
-  nexrt()
+  store(e)
     {
-        this.router.navigate(['deposit/Details'])
+      sessionStorage["Reference"] = e.target.ref.value;
+      sessionStorage["Account"] = e.target.account.value;
+     // this.router.navigate(['deposit/Details'])
+     this.next();
     }
-    async next(QR) {
 
-     
+    async next() {
+
       const alert = await this.alert.create({
         cssClass: 'Confirmations',
         header: 'Deposit in Bank Accounts of',
-        subHeader:` Mr SS Mlangeni`,
-        message:'Bank Account: 0220293929293',
+        subHeader: sessionStorage["DepositName"],
+        message:'Bank Account: ' + sessionStorage["Account"],
         buttons: [
           {text: 'Cancel',
           role: 'cancel',
