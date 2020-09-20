@@ -1,6 +1,5 @@
 import { Component, Inject, OnInit, ViewChild, ElementRef, Input, NgZone } from '@angular/core';
 import { MapsAPILoader, AgmMap } from '@agm/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { AgmCoreModule } from '@agm/core';

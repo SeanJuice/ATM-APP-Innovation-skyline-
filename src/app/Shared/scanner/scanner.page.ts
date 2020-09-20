@@ -1,8 +1,8 @@
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 //import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
-
-import { AlertController, ToastController } from '@ionic/angular';
+import {formatDate } from '@angular/common';
+import { AlertController, IonDatetime, ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
 
@@ -32,8 +32,10 @@ export class ScannerPage implements OnInit {
   atm: any;
   qrData : Boolean;
 //
-  UIDs =  ['c4e2e74e-51fb-4ecf-b856-4e2e2b9e0453','4b0d7a03-1e9d-4a8c-a0e8-47f937b1940d'
-  ,'21d3ccd9-7220-46e8-98ee-4db4c52ac498','1fd69bc4-6a00-40ff-8d67-4506e84a0240',
+  UIDs =  ['c4e2e74e-51fb-4ecf-b856-4e2e2b9e0453',
+  '4b0d7a03-1e9d-4a8c-a0e8-47f937b1940d',
+  '21d3ccd9-7220-46e8-98ee-4db4c52ac498',
+  '1fd69bc4-6a00-40ff-8d67-4506e84a0240',
   '7ddd46a8-6824-44ff-bec6-e485c6361cd1']
 
 
@@ -234,14 +236,17 @@ async presentAlert(QR) {
   }
 
   back(){
-    this.route.navigate(['withdraw'])
+    this.route.navigate(['login'])
   }
   async SuccessfulTransaction() {
+
+    let now = new Date();
+
     const toast = await this.toastController.create({
-      message: 'transaction successfully',
+      message: 'Bank Notification:-)  R' + sessionStorage["WithdrawalAmount"] + '.00 paid from Savings Account ...0875421 @Smartapp - Ref 48456 ; ' + now.toString(),
       position:"top",
       cssClass: "MyToasts",
-      duration: 3000,
+      duration: 7000,
       
     })
     
@@ -252,12 +257,14 @@ async presentAlert(QR) {
   }
   async takeMoneyNotification() {
     const toast = await this.toastController.create({
-      message: 'you can take out your money',
+      message: 'Please proceed to take your money: R' + sessionStorage["WithdrawalAmount"] + ' Savings Account ...0875421 @Smartapp - Ref 48456',
       position:"top",
       cssClass: "MyToasts",
       duration: 3500,
       
     }).then();
     toast.present();
+    this.route.navigate(['login'])
+
   }
 }
