@@ -1,26 +1,20 @@
-
-
-<ion-header>
-   
-</ion-header>
-<div style="padding-top: 5%;"></div>
-
 <ion-content>
+<body>
 	<div class="box" style="height: 60%;">
 		<h2>Select a Transaction</h2>
-		<form action="">
+    <form (ngSubmit)="store($event)">
       <div class="inputBox">
-        <input type="text" name="Name" required="">
+        <input type="text" name="ref" required="">
         <label for="">Reference</label>
       </div>
 		  <div class="inputBox">
-        <input type="number" name="Name" required="">
+        <input type="text" name="account" required="">
         <label for="">Account Number</label>
       </div>
+      &nbsp;&nbsp;&nbsp;<input type="submit" name="" value="P r o c e e d">
+      <br><br><br><br>
+      &nbsp;&nbsp;&nbsp;<img src="../assets/images/logo.jpg" alt="BDO" width="100" height="50">   
     </form>
-    <div class="inputBox">
-      <ion-button  style="width: 100%;padding-top: 6%;" (click)="next()">Next</ion-button>
-    </div>
 	</div>
-
+</body>
 </ion-content>

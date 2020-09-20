@@ -7,14 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./deposit.page.scss'],
 })
 export class DepositPage implements OnInit {
-
+  name: string;
   constructor(private router:Router) { }
 
   ngOnInit() {
   }
-  next()
-    {
-        this.router.navigate(['deposit/Reference'])
+
+    store(e){
+      sessionStorage["DepositName"] = e.target.name.value;
+      this.router.navigate(['deposit/Reference'])
     }
   
 }
