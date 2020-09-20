@@ -77,17 +77,63 @@ clearResult(): void {
 
 onCodeResult(resultString: string) {
   this.qrResultString = resultString;
- /*if(this.qrData == false){
+ if(this.qrData == false){
     this.successNotification(this.qrResultString);
     this.qrData = true;
   }
   else if(this.qrData == true){
     console.log("QR code already scanned: " + this.qrResultString);
-  }*/
+  }
 }
 
   next()
     {
         this.route.navigate(['deposit/Details'])
+    }
+
+    async successNotification(QR) {
+
+     
+      const alert = await this.alert.create({
+        cssClass: 'Confirmations',
+        header: 'Successfully captured, Insert the money on the container',
+      //  message:` Bank: ${Atm.BankName}`,
+        buttons: [
+          {text: 'Cancel',
+          handler: () => {
+            this.route.navigate(['transactionoptions'])
+          }},
+          {text: 'Proceed',
+          handler: () => {
+            this.route.navigate(['transactionoptions']) 
+            this.SuccessfulTransaction()
+          }}
+      ]
+      });
+      await alert.present();
+    }
+    async SuccessfulTransaction() {
+      const toast = await this.toastController.create({
+        message: 'Deposit to Account Mr SS Successfully',
+        position:"top",
+        cssClass: "MyToasts",
+        duration: 3000,
+        
+      })
+      
+      toast.present();
+      toast.onDidDismiss().then(() => {
+        this.takeMoneyNotification()
+    });
+    }
+    async takeMoneyNotification() {
+      const toast = await this.toastController.create({
+        message: 'Notify Mr SS to check their account =',
+        position:"top",
+        cssClass: "MyToasts",
+        duration: 3000,
+        
+      }).then();
+      toast.present();
     }
 }
