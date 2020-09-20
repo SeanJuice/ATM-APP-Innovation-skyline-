@@ -6,6 +6,7 @@ import { AngularFireDatabase ,AngularFireList } from '@angular/fire/database';
 import * as firebase from 'firebase/app';
 import 'firebase/storage';
 import { FileUpload } from './file.model';
+import { AlertController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +14,10 @@ import { FileUpload } from './file.model';
 
 export class ImagesService {
 
-  constructor(private firestore: AngularFirestore,private db: AngularFireDatabase) { }
+  constructor(private firestore: AngularFirestore,private db: AngularFireDatabase, private alert: AlertController) { }
   private basePath = '/Banks';
   alreadyRan = true;
+  BankID:string;
 
     //uploadig document
     pushFileToStorage(fileUpload: FileUpload,data,progress: { percentage: number }) {
@@ -47,10 +49,12 @@ export class ImagesService {
               return this.firestore.collection('Bankpictures').add({
                 Name: fileUpload.file.name,
                 Url: downloadURL,
-                type: data,
+                BankName: data,
                 Date: Date.now()
-              }).catch(rrr=>{
-                console.log(rrr)
+              }).then(rrr=>{
+               this.BankID =  rrr.id;
+               console.log(this.BankID)
+               this.successNotification(this.BankID)
               })
             }
            
@@ -60,5 +64,20 @@ export class ImagesService {
         }
   
       )
+    }
+
+    async successNotification(Code) {
+      const alert = await this.alert.create({
+        cssClass: 'Confirmations',
+        header: 'Successfully Submitted',
+        message: `Bank database ID: ${ Code}`,
+        buttons: [
+          {text: 'OK',
+          handler: () => {
+            
+          }}
+      ]
+      });
+      await alert.present();
     }
 }

@@ -47,7 +47,11 @@ const routes: Routes = [
   {
     path: 'balance',
     loadChildren: () => import('./balance/balance.module').then( m => m.BalancePageModule)
-  }]
+  }, {
+    path: 'deposit',
+    loadChildren: () => import('./Shared/deposit/deposit.module').then( m => m.DepositPageModule)
+  }
+] 
 
 @NgModule({
   imports: [

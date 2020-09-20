@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from "@angular/fire/auth";
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-loginscreen',
@@ -8,17 +10,24 @@ import { Router } from '@angular/router';
 })
 export class LoginscreenPage implements OnInit {
 
-  constructor(private route: Router) { }
+  constructor(private route: Router,private router:Router,
+    private AfAuth:AngularFireAuth) { }
 
   ngOnInit() {
   }
-  onSubmit(password,username )
+  async logins(form:NgForm)
   {
-    console.log(password)
+    const { Username,password } = form.value
+   await this.AfAuth.signInWithEmailAndPassword(Username,password).then(res=>{
+  
+    form.reset();
+    localStorage.setItem('CurrentUser', res.user.uid);
     this.route.navigate(['transactionoptions'])
+   });
+ 
   }
   login(){
-    this.route.navigate(['transactionoptions'])
+  this.route.navigate(['transactionoptions'])
 
   }
 }

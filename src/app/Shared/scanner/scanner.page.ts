@@ -1,7 +1,8 @@
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 //import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 
-import { AlertController } from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
 
@@ -30,8 +31,14 @@ export class ScannerPage implements OnInit {
   homescreen: boolean;
   atm: any;
   qrData : Boolean;
+//
+  UIDs =  ['c4e2e74e-51fb-4ecf-b856-4e2e2b9e0453','4b0d7a03-1e9d-4a8c-a0e8-47f937b1940d'
+  ,'21d3ccd9-7220-46e8-98ee-4db4c52ac498','1fd69bc4-6a00-40ff-8d67-4506e84a0240',
+  '7ddd46a8-6824-44ff-bec6-e485c6361cd1']
 
-  constructor(/*private qrScanner: QRScanner*/ private renderer:Renderer2, private alert: AlertController, private route: Router) { }
+
+  constructor(/*private qrScanner: QRScanner*/ private renderer:Renderer2, 
+    private alert: AlertController, private route: Router,private db:AngularFirestore,private toastController:ToastController) { }
 
   ngOnInit() {
     this.popup = false;
@@ -91,23 +98,26 @@ async Transact(QR)
     this.successNotification(QR);
 }
 
-test(QR){
+test(QR,Atm?){
   if(this.popup == true){
-    this.locationConfirmation(QR);
+    this.locationConfirmation(QR,Atm);
   }
   if(this.popup2 == true){
     this.presentAlert(QR);
   }
   if(this.homescreen == true){
-    this.route.navigate(['transactionoptions'])
+    this.route.navigate(['transactionoptions']) 
+    this.SuccessfulTransaction()
   }
 }
 //Popup1
 async successNotification(QR) {
+  let Atm = this.Validation(QR)
+ 
   const alert = await this.alert.create({
     cssClass: 'Confirmations',
     header: 'Successfully captured',
-    message: 'Bank: FNB',
+    message:` Bank: ${Atm.BankName}`,
     buttons: [
       {text: 'Cancel',
       handler: () => {
@@ -116,21 +126,22 @@ async successNotification(QR) {
       {text: 'Proceed',
       handler: () => {
         this.popup = true;
-        this.test(QR);      
+        this.test(QR,Atm);      
       }}
   ]
   });
   await alert.present();
 }
 
-//Popup2
-async locationConfirmation(QR) {
-  this.atm = "https://naibuzz.com/wp-content/uploads/2017/05/FNB.jpg";
+//Popup2 
+async locationConfirmation(QR,Atm) {
   this.popup = false;
   const alert = await this.alert.create({
     cssClass: 'Confirmations',
     header: 'Location Confrimation:',
-    message: `<img src="${this.atm}">`,
+    subHeader: `Street Name :${Atm.StreetName}`,
+    message: `<img src="${Atm.Url}"> `,
+    
     buttons: [
       {text: 'Cancel',
       handler: () => {
@@ -152,6 +163,7 @@ async presentAlert(QR) {
       header: 'Banking Pin:',
       inputs: [
         {
+          type:'number',
           name: 'pin',
           placeholder: 'e.g 1234'
         }],
@@ -172,7 +184,80 @@ async presentAlert(QR) {
     await alert.present();
   }
 
+  //ATM checking 
+  Validation(QR)
+  {
+    if(QR == this.UIDs[0])
+    {
+      let ATM = { 
+        Url:"https://i.ibb.co/9bWdsVc/Capture.png", 
+        StreetName:"Bosman St, Pretoria Central, Pretoria, 0001",
+        BankName:'Capitec'
+     };
+     return ATM
+    }
+    else if(QR == this.UIDs[1])
+    {
+      let ATM = { 
+        Url:"https://i.ibb.co/ws52HCC/standard-b.png", 
+        StreetName:"Elandspoort 357-Jr, Pretoria, 0132",
+        BankName:'Standard Bank'
+     };
+     return ATM
+    }
+    else if(QR == this.UIDs[2])
+    {
+      let ATM = { 
+        Url:"https://i.ibb.co/YQm8LXY/nedbank.png", 
+        StreetName:"Belle Ombre, 269 Boom St, Asiatic Bazaar, Pretoria, 0001",
+        BankName:'Nedbank'
+     };
+     return ATM
+    } 
+    else if(QR == this.UIDs[3])
+    {
+      let ATM = { 
+        Url:"https://i.ibb.co/HG1y5Y3/fnb.png", 
+        StreetName:"338 Bronkhorst St, Nieuw Muckleneuk, Pretoria, 0181",
+        BankName:'FNB'
+     };
+     return ATM
+    }  else if(QR == this.UIDs[4])
+    {
+      let ATM = { 
+        Url:"https://i.ibb.co/LCyMWTD/Absa.png", 
+        StreetName:"Menlo Park Centre, 13th St, Menlo Park, Pretoria, 1236",
+        BankName:'ABSA'
+     };
+     return ATM
+    }
+  }
+
   back(){
     this.route.navigate(['withdraw'])
+  }
+  async SuccessfulTransaction() {
+    const toast = await this.toastController.create({
+      message: 'transaction successfully',
+      position:"top",
+      cssClass: "MyToasts",
+      duration: 3000,
+      
+    })
+    
+    toast.present();
+    toast.onDidDismiss().then(() => {
+      this.takeMoneyNotification()
+  });
+  }
+  async takeMoneyNotification() {
+    const toast = await this.toastController.create({
+      message: 'you can take out your money',
+      position:"top",
+      cssClass: "MyToasts",
+      duration: 3500,
+      
+    }).then();
+    toast.present();
   }
 }

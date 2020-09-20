@@ -6,18 +6,18 @@
   </head>
   <body>
       <h2></h2>
-    <form action="">
+      <form #form="ngForm" (submit)="login(form)">
       <div class="box" >
         <div class="inputBox">
-          <input type="text" name="" required="">
+          <input type="text" name='Username' #Username="ngModel" ngModel  required="">
           <label for="">Username</label>
         </div>
         <div class="inputBox">
-          <input type="text" name="" required="">
+          <input type="password"  #password="ngModel" ngModel name="password" required="">
           <label for="">Password</label>
        </div>
        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-       <input type="submit" name="" value="L O G I N" (click)="login()">
+       <input type="submit" name="" value="L O G I N">
       </div>
       <div>
           <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

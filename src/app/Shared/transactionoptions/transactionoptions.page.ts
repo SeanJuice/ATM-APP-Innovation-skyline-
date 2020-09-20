@@ -15,5 +15,9 @@ export class TransactionoptionsPage implements OnInit {
   Amount(){
     this.route.navigate(['withdraw'])
   }
-
+  Deposit(){
+    this.route.navigate(['deposit'])
+  }
+Register()
+{}
 }
