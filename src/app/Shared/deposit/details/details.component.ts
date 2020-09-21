@@ -110,7 +110,7 @@ onCodeResult(resultString: string) {
           }}
       ]
       });
-      await alert.present();
+      setTimeout(()=> alert.present(),3000);
     }
     async SuccessfulTransaction() {
 
