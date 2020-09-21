@@ -18,6 +18,8 @@ export class TransactionoptionsPage implements OnInit {
   Deposit(){
     this.route.navigate(['deposit'])
   }
-Register()
-{}
+Home()
+{
+  this.route.navigate(['login'])
+}
 }

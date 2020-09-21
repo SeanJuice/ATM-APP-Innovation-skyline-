@@ -243,7 +243,7 @@ async presentAlert(QR) {
     let now = new Date();
 
     const toast = await this.toastController.create({
-      message: `<img src="../assets/images/brise.jpg" width="20" height="20">` + 'Bank Notification:-)  R' + sessionStorage["WithdrawalAmount"] + '.00 paid from Savings Account ...0875421 @Smartapp - Ref 48456; ' + now.toString(),
+      message: `<img src="../assets/images/Notification.jpg" style="width:20%;height:20%">` + 'Bank Notification:-)  R' + sessionStorage["WithdrawalAmount"] + '.00 paid from Savings Account ...0875421 @Smartapp - Ref 48456; ' + now.toString(),
       position:"top",
       cssClass: "MyToasts",
       duration: 8000,
