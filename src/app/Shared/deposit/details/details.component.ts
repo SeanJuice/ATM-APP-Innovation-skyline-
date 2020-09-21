@@ -117,10 +117,10 @@ onCodeResult(resultString: string) {
       let now = new Date();
 
       const toast = await this.toastController.create({
-        message: `<img src="../assets/images/Notification.jpg" width="20" height="20">` + 'Deposit to ' + sessionStorage["DepositName"] + ': Account ' + sessionStorage["Account"] + ' Successful ;' + now.toString(),
+        message: `<img src="../assets/images/notification.jpg" width="20" height="20">` + 'Deposit to ' + sessionStorage["DepositName"] + ': Account ' + sessionStorage["Account"] + ' Successful ;' + now.toString(),
         position:"top",
         cssClass: "MyToasts",
-        duration: 3000,
+        duration: 7000,
         
       })
       
@@ -131,10 +131,10 @@ onCodeResult(resultString: string) {
     }
     async takeMoneyNotification() {
       const toast = await this.toastController.create({
-        message: `<img src="../assets/images/Notification.jpg" width="20" height="20">` +  'Please Notify ' + sessionStorage["DepositName"] + ' to check their account. Reference: ' + sessionStorage["Reference"] ,
+        message: `<img src="../assets/images/notification.jpg" width="20" height="20">` +  'Please Notify ' + sessionStorage["DepositName"] + ' to check their account for deposit. Reference no: ' + sessionStorage["Reference"] ,
         position:"top",
         cssClass: "MyToasts",
-        duration: 3000,
+        duration: 5000,
         
       }).then();
       toast.present();

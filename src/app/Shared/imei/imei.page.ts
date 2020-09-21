@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-imei',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class ImeiPage implements OnInit {
 
-  constructor(private route: Router) { }
+  constructor(private route: Router, private alert: AlertController) { }
 
   ngOnInit() {
   }
@@ -16,5 +17,23 @@ export class ImeiPage implements OnInit {
   back(){
     this.route.navigate(['login'])
   }
+
+  async new() {
+
+    const alert = await this.alert.create({
+      cssClass: 'Confirmations',
+      header: 'IMEI Authorization Email Sent to Registered Email.',
+      subHeader: '**********@gmail.com',
+      message: 'Please follow the IMEI Authorization Instructions.',
+      buttons: [
+        {text: 'Ok',
+        handler: () => {
+          this.route.navigate(['login'])        
+        }}
+    ]
+    });
+    await alert.present();
+  }
+
 
 }
