@@ -120,7 +120,7 @@ onCodeResult(resultString: string) {
         message: `<img src="../assets/images/brise.jpg" width="20" height="20">` + 'Deposit to ' + sessionStorage["DepositName"] + ': Account ' + sessionStorage["Account"] + ' Successful ;' + now.toString(),
         position:"top",
         cssClass: "MyToasts",
-        duration: 3000,
+        duration: 7000,
         
       })
       
@@ -134,7 +134,7 @@ onCodeResult(resultString: string) {
         message: `<img src="../assets/images/brise.jpg" width="20" height="20">` +  'Please Notify ' + sessionStorage["DepositName"] + ' to check their account. Reference: ' + sessionStorage["Reference"] ,
         position:"top",
         cssClass: "MyToasts",
-        duration: 3000,
+        duration: 5000,
         
       }).then();
       toast.present();
