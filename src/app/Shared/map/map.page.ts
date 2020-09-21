@@ -151,7 +151,10 @@ async showPosition() {
       header: 'Current Location',
       message: 'Latititude: ' + this.latitude + ', Longitude: ' + this.longitude,
       buttons: [
-        {text: 'OK'}
+        {text: 'OK',
+        handler: () => {
+          this.route.navigate(['login'])
+        }}
     ]
     });
     await alert.present();
