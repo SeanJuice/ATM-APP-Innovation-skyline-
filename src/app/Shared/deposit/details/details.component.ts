@@ -131,7 +131,7 @@ onCodeResult(resultString: string) {
     }
     async takeMoneyNotification() {
       const toast = await this.toastController.create({
-        message: `<img src="../assets/images/notification.jpg" width="20" height="20">` +  'Please Notify ' + sessionStorage["DepositName"] + ' to check their account for deposit. Reference no: ' + sessionStorage["Reference"] ,
+        message: `<img src="../assets/images/notification.jpg" width="20" height="20">` +  'Please Notify ' + sessionStorage["DepositName"] + ' to check their account for deposit. Reference: ' + sessionStorage["Reference"] ,
         position:"top",
         cssClass: "MyToasts",
         duration: 5000,
