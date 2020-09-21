@@ -132,7 +132,7 @@ async successNotification(QR) {
       }}
   ]
   });
-  await alert.present();
+  setTimeout(()=> alert.present(),3000);
 }
 
 //Popup2 
